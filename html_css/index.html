@@ -1,8 +1,9 @@
 <!doctype html>
-<html>
+<html lang="uk">
   <head>
+    <meta charset="UTF-8">
     <title>My resume</title>
-    <link rel="stylesheet" , href="style.css" />
+    <link rel="stylesheet" href="style.css" />
     <style>
       .accent-text {
         font-weight: bold;
@@ -12,6 +13,12 @@
   </head>
   <body>
     <div id="resume-container">
+      
+      <!-- Кнопка ручного перемикання теми -->
+      <div style="display: flex; justify-content: flex-end; width: 100%;">
+        <button id="theme-toggle">🌙 Нічний режим</button>
+      </div>
+
       <header>
         <h1
           style="
@@ -28,12 +35,13 @@
           Котяша Олега
         </h1>
       </header>
-      <main>
+      
+      <main style="display: flex; flex-direction: column; gap: 20px;">
         <section id="experience" class="section-card">
           <h2>Досвід програмування</h2>
           <p>
             <span class="accent-text">Python</span> вивчав ще зі школи та
-            протягом семeстру в університеті, а також самостійно на сайті
+            протягом семестру в університеті, а також самостійно на сайті
             codewars. <br />
             Написав програми для шифрування тексту, роботи з лог-файлами,
             скрипти, працював з бібліотеками numpy. <br />
@@ -80,23 +88,65 @@
           </p>
         </section>
 
+        <!-- Секція для відгуків (отриманих через Fetch API) -->
+        <section id="reviews" class="section-card">
+          <h2>Відгуки роботодавців</h2>
+          <div id="reviews-container">Завантаження відгуків...</div>
+        </section>
+
         <section id="contacts" class="section-card">
           <h2>Контактна інформація</h2>
-
           <address>
             <a
-              href=""
+              href="mailto:oleh.kotiash.kb.2025@lpnu.ua"
               target="_blank"
               title="mailto:oleh.kotiash.kb.2025@lpnu.ua"
               >Email</a>
-            <br />
             <a
               href="https://www.linkedin.com/me?trk=p_mwlite_feed-secondary_nav"
               title="Посилання на LinkedIn"
+              target="_blank"
               >LinkedIn</a>
           </address>
         </section>
       </main>
+
+      <!-- Футер для системної інформації з localStorage -->
+      <footer style="text-align: center; border-top: 1px solid #f0e6dc; padding-top: 15px; margin-top: 10px;">
+        <div id="sys-info" style="font-size: 10px; color: #666; font-family: monospace; display: flex; flex-direction: column; gap: 4px;"></div>
+      </footer>
     </div>
+
+    <!-- Модальне вікно форми зворотного зв'язку -->
+    <div id="contact-modal" class="modal" style="display: none;">
+      <div class="modal-content">
+        <button id="close-modal" class="close-btn">&times;</button>
+        <h3 style="margin-bottom: 10px; font-size: 1.2rem;" class="modal-title">Зворотний зв'язок</h3>
+        <p style="font-size: 12px; margin-bottom: 15px;" class="modal-desc">
+          Ви перебуваєте на сайті вже більше хвилини. Заповніть форму, і дані надійдуть безпосередньо на пошту.
+        </p>
+        <form action="https://formspree.io/f/mjyyankg" method="POST" style="display: flex; flex-direction: column; gap: 10px;">
+          <div>
+            <label style="display: block; font-size: 11px; font-weight: 600; margin-bottom: 3px;">Ім'я</label>
+            <input type="text" name="name" required class="modal-input" />
+          </div>
+          <div>
+            <label style="display: block; font-size: 11px; font-weight: 600; margin-bottom: 3px;">Email</label>
+            <input type="email" name="email" required class="modal-input" />
+          </div>
+          <div>
+            <label style="display: block; font-size: 11px; font-weight: 600; margin-bottom: 3px;">Номер телефону</label>
+            <input type="tel" name="phone" class="modal-input" />
+          </div>
+          <div>
+            <label style="display: block; font-size: 11px; font-weight: 600; margin-bottom: 3px;">Повідомлення</label>
+            <textarea name="message" rows="3" required class="modal-input"></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Надіслати</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
   </body>
 </html>

@@ -1,11 +1,11 @@
 *, *::before, *::after {
-box-sizing: border-box;
-margin: 0;
-padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneve, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f7f3ed;
     color: #2c2c2c;
     line-height: 1.6;
@@ -14,19 +14,21 @@ body {
     align-items: center;
     min-height: 100vh;
     padding: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #resume-container {
-width: 100%;
-max-width: 800px;
-background-color: #ffffff;
-border: 2px solid #dcd6cd;
-border-radius: 12px;
-padding: 30px;
-box-shadow: 0 4px 12px rgb(40, 39, 39);
-display: flex;
-flex-direction: column;
-gap: 25px;
+  width: 100%;
+  max-width: 800px;
+  background-color: #ffffff;
+  border: 2px solid #dcd6cd;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgb(40, 39, 39);
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .section-card {
@@ -34,13 +36,14 @@ gap: 25px;
     border: 1px solid #e6dfd5;
     border-radius: 8px;
     padding: 20px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .section-card h2 {
     color: #bc7a4a;
     margin-bottom: 12px;
     font-size: 1.4rem;
-    border-bottom: 2px  solid #f0e6dc;
+    border-bottom: 2px solid #f0e6dc;
     padding-bottom: 5px;
 }
 
@@ -54,11 +57,6 @@ a[target="_blank"] {
 a[target="_blank"]:hover {
     color: #7b411c;
     text-decoration: underline;
-}
-
-a[target="_blank"]:focus {
-    outline: 2px dashed #bc7a4a;
-    outline-offset: 3px;
 }
 
 ul {
@@ -76,16 +74,154 @@ address {
     gap: 15px;
 }
 
+/* --- СТИЛІ ДЛЯ КНОПКИ ПЕРЕМИКАННЯ ТЕМИ --- */
+#theme-toggle {
+    padding: 6px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 6px;
+    border: 1px solid #dcd6cd;
+    background: #ffffff;
+    color: #2c2c2c;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* --- СТИЛІ ДЛЯ ТЕМНОГО РЕЖИМУ --- */
+body.dark {
+    background-color: #030712;
+    color: #f3f4f6;
+}
+
+body.dark #resume-container {
+    background-color: #111827;
+    border-color: #1f2937;
+}
+
+body.dark .section-card {
+    background-color: #030712;
+    border-color: #1f2937;
+}
+
+body.dark .section-card h2 {
+    color: #fbbf24;
+    border-bottom-color: #1f2937;
+}
+
+body.dark a[target="_blank"] {
+    color: #fcd34d;
+}
+
+body.dark footer {
+    border-top-color: #1f2937 !important;
+    color: #9ca3af;
+}
+
+body.dark #theme-toggle {
+    background: #1f2937;
+    color: #f3f4f6;
+    border-color: #374151;
+}
+
+/* --- СТИЛІ МОДАЛЬНОГО ВІКНА --- */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.modal-content {
+    background: #fdfbf7;
+    border: 1px solid #e6dfd5;
+    border-radius: 12px;
+    padding: 25px;
+    width: 100%;
+    max-width: 420px;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.modal-title { color: #bc7a4a; }
+.modal-desc { color: #666; }
+
+body.dark .modal-content {
+    background: #111827;
+    border-color: #1f2937;
+    color: #f3f4f6;
+}
+
+body.dark .modal-title { color: #fbbf24; }
+body.dark .modal-desc { color: #9ca3af; }
+
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: #888;
+}
+
+body.dark .close-btn {
+    color: #9ca3af;
+}
+
+.modal-input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #dcd6cd;
+    border-radius: 6px;
+    font-size: 13px;
+    outline: none;
+}
+
+body.dark .modal-input {
+    background: #1f2937;
+    border-color: #374151;
+    color: #fff;
+}
+
+.submit-btn {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    background: #bc7a4a;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+body.dark .submit-btn {
+    background: #d97706;
+}
+
+.submit-btn:hover {
+    background: #a05a3c;
+}
+
+body.dark .submit-btn:hover {
+    background: #b45309;
+}
+
 @media (max-width: 600px) {
     body {
-        padding: 10px
+        padding: 10px;
     }
-
     #resume-container {
-    padding: 15px;
-    border-width: 1px;
+        padding: 15px;
+        border-width: 1px;
     }
-
     address {
         flex-direction: column;
         gap: 8px;
